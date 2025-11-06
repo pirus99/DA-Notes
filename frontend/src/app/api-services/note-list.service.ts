@@ -10,6 +10,8 @@ export class NoteListService {
   apiUrl: string = 'http://localhost:8000/api/v1/';
 
   async fetchNotes() {
+    this.trashNotes = [];
+    this.normalNotes = [];
     try {
       const response = await fetch(`${this.apiUrl}notes/`);
       if (!response.ok) {
@@ -41,6 +43,7 @@ export class NoteListService {
       },
       body: JSON.stringify(note)
     });
+    this.fetchNotes();
     return response.json();
   }
 
@@ -53,6 +56,7 @@ export class NoteListService {
       },
       body: JSON.stringify(note)
     });
+    this.fetchNotes();
     return response.json();
   }
 
@@ -64,6 +68,7 @@ export class NoteListService {
       },
       body: JSON.stringify(note)
     });
+    this.fetchNotes();
     return response.json();
   }
 
@@ -71,6 +76,7 @@ export class NoteListService {
     const response = await fetch(`${this.apiUrl}note/${note.id}/`, {
       method: 'DELETE'
     });
+    this.fetchNotes();
     return response.ok;
   }
 
