@@ -1,5 +1,5 @@
 export interface Note {
-    id: string;
+    id: number;
     type: "note" | "trash";
     title: string;
     content: string;

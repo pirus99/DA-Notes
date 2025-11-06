@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Note } from '../interfaces/note.interface';
-import { NoteListService } from '../firebase-services/note-list.service'
+import { NoteListService } from '../api-services/note-list.service'
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -25,7 +25,7 @@ export class AddNoteDialogComponent {
 
   addNote(){
     let note: Note = {
-      id: "",
+      id: null!,
       type: "note",
       title: this.title,
       content: this.description,
