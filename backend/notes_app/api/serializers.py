@@ -5,10 +5,11 @@ class NotesSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Note
-        exclude = []
+        fields = ['url', 'id', 'title', 'content', 'type', 'marked']
 
 class NoteSerializer(NotesSerializer):
 
     class Meta:
         model = Note
-        exclude = ['url']
+        fields = ['id', 'title', 'content', 'type', 'marked']
+
